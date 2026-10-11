@@ -1,0 +1,671 @@
+[{
+  "id": "tiramisu-01",
+  "nombre": "Tiramisú",
+  "bloque": "tortas",
+  "categoria": "tortas-clasicas",
+  "tags": ["cafe", "mascarpone", "clasica", "italiana"],
+  "porciones": 12,
+  "molde": {
+    "forma": "rectangular",
+    "largo_cm": 30,
+    "ancho_cm": 20,
+    "altura_cm": 6,
+    "tipo": "fijo"
+  },
+  "escalado": {
+    "tipo": "diametro",
+    "base_cm": 30,
+    "regla": "area",
+    "altura_fija": true
+  },
+  "sub_recetas": [
+    {
+      "id": "bizcocho-vainilla-01",
+      "nombre": "Bizcocho de vainilla",
+      "ingredientes": [
+        { "nombre": "huevos", "cantidad_g": 200, "rol": "estructura", "notas": "temperatura ambiente" },
+        { "nombre": "azúcar", "cantidad_g": 150, "rol": "endulzante", "notas": "" },
+        { "nombre": "harina 0000", "cantidad_g": 150, "rol": "estructura", "notas": "tamizada" },
+        { "nombre": "almidón de maíz", "cantidad_g": 50, "rol": "estructura", "notas": "tamizado" },
+        { "nombre": "esencia de vainilla", "cantidad_g": 5, "rol": "aroma", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Batido", "duracion_min": 10, "temperatura_c": 22, "tecnica": "batido", "descripcion": "Batir huevos con azúcar hasta punto letra.", "ciencia_ref": "aireado" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "envolvente", "descripcion": "Incorporar harina y almidón tamizados con movimientos envolventes.", "ciencia_ref": "" },
+        { "nombre": "Horneado", "duracion_min": 20, "temperatura_c": 180, "tecnica": "horneado", "descripcion": "Hornear en placa 30x20 cm.", "ciencia_ref": "gelatinizacion_almidon" }
+      ]
+    },
+    {
+      "id": "crema-mascarpone-01",
+      "nombre": "Crema de mascarpone",
+      "ingredientes": [
+        { "nombre": "yemas", "cantidad_g": 100, "rol": "estructura", "notas": "" },
+        { "nombre": "azúcar", "cantidad_g": 100, "rol": "endulzante", "notas": "" },
+        { "nombre": "agua", "cantidad_g": 50, "rol": "solvente", "notas": "" },
+        { "nombre": "mascarpone", "cantidad_g": 500, "rol": "grasa", "notas": "temperatura ambiente" },
+        { "nombre": "crema de leche", "cantidad_g": 300, "rol": "grasa", "notas": "35% MG, bien fría" }
+      ],
+      "etapas": [
+        { "nombre": "Sabayón", "duracion_min": 5, "temperatura_c": 85, "tecnica": "batido en caliente", "descripcion": "Batir yemas con almíbar a 121°C hasta punto letra.", "ciencia_ref": "coagulacion_proteinas" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "envolvente", "descripcion": "Incorporar mascarpone y crema batida a medio punto.", "ciencia_ref": "emulsion" }
+      ]
+    },
+    {
+      "id": "cafe-almibar-01",
+      "nombre": "Almíbar de café",
+      "ingredientes": [
+        { "nombre": "agua", "cantidad_g": 200, "rol": "solvente", "notas": "" },
+        { "nombre": "azúcar", "cantidad_g": 100, "rol": "endulzante", "notas": "" },
+        { "nombre": "café instantáneo", "cantidad_g": 20, "rol": "aroma", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Hervor", "duracion_min": 2, "temperatura_c": 100, "tecnica": "hervor", "descripcion": "Hervir agua con azúcar, disolver café.", "ciencia_ref": "extraccion" }
+      ]
+    }
+  ],
+  "etapas": [
+    { "nombre": "Preparar bizcocho", "sub_receta_id": "bizcocho-vainilla-01", "ciencia_ref": "aireado" },
+    { "nombre": "Preparar crema", "sub_receta_id": "crema-mascarpone-01", "ciencia_ref": "emulsion" },
+    { "nombre": "Preparar almíbar", "sub_receta_id": "cafe-almibar-01", "ciencia_ref": "extraccion" },
+    { "nombre": "Montaje", "descripcion": "Alternar capas de bizcocho embebido en almíbar y crema de mascarpone. Refrigerar 4 horas.", "ciencia_ref": "" },
+    { "nombre": "Terminación", "descripcion": "Espolvorear cacao amargo antes de servir.", "ciencia_ref": "" }
+  ],
+  "ciencia": [
+    {
+      "fenomeno": "emulsion",
+      "explicacion": "La crema de mascarpone es una emulsión de grasa en agua estabilizada por las proteínas de la yema y la crema. El batido incorpora aire y distribuye la grasa en gotas pequeñas.",
+      "punto_critico": "Temperatura de la crema (0-4°C) y del mascarpone (ambiente). Si la crema está muy fría, no se incorpora bien; si está muy caliente, se corta.",
+      "error_tipico": "Batir en exceso la crema o incorporar mascarpone frío, lo que provoca grumos.",
+      "referencia": "Koppmann, cap. 3"
+    },
+    {
+      "fenomeno": "coagulacion_proteinas",
+      "explicacion": "El sabayón se forma al batir yemas con almíbar caliente. Las proteínas de la yema se desnaturalizan y coagulan parcialmente, creando una estructura espumosa y estable.",
+      "punto_critico": "Temperatura del almíbar (121°C) y batido constante para evitar que las yemas se cocinen en exceso.",
+      "error_tipico": "Almíbar muy caliente o batido insuficiente, lo que causa grumos de yema cocida.",
+      "referencia": "Koppmann, cap. 2"
+    },
+    {
+      "fenomeno": "extraccion",
+      "explicacion": "El café instantáneo se disuelve en el almíbar caliente, extrayendo los compuestos aromáticos y solubles del café.",
+      "punto_critico": "Temperatura del agua (100°C) para una extracción completa.",
+      "error_tipico": "Agua tibia que no disuelve bien el café.",
+      "referencia": "Badui, cap. 8"
+    }
+  ],
+  "bpm": [
+    "Lavado de manos antes de manipular",
+    "Superficie desinfectada",
+    "Uso de guantes",
+    "Temperatura de frío controlada (< 5°C)"
+  ],
+  "anmat": [
+    "Rotulado según CAA art. 235",
+    "Declaración de alérgenos",
+    "Fecha de elaboración y vencimiento",
+    "Condiciones de conservación: refrigerado"
+  ],
+  "rendimiento": {
+    "unidades": 12,
+    "peso_pieza_g": 120,
+    "peso_total_g": 1440
+  },
+  "referencias": [
+    { "libro": "Gross", "capitulo": "El ABC de la Pastelería", "pagina": 0 }
+  ],
+  "activa": true
+},
+{
+  "id": "tiramisu-01",
+  "nombre": "Tiramisú",
+  "bloque": "tortas",
+  "categoria": "tortas-clasicas",
+  "tags": ["cafe", "mascarpone", "clasica", "italiana"],
+  "porciones": 12,
+  "molde": {
+    "forma": "rectangular",
+    "largo_cm": 30,
+    "ancho_cm": 20,
+    "altura_cm": 6,
+    "tipo": "fijo"
+  },
+  "escalado": {
+    "tipo": "diametro",
+    "base_cm": 30,
+    "regla": "area",
+    "altura_fija": true
+  },
+  "sub_recetas": [
+    {
+      "id": "bizcocho-vainilla-01",
+      "nombre": "Bizcocho de vainilla",
+      "ingredientes": [
+        { "nombre": "huevos", "cantidad_g": 200, "rol": "estructura", "notas": "temperatura ambiente" },
+        { "nombre": "azúcar", "cantidad_g": 150, "rol": "endulzante", "notas": "" },
+        { "nombre": "harina 0000", "cantidad_g": 150, "rol": "estructura", "notas": "tamizada" },
+        { "nombre": "almidón de maíz", "cantidad_g": 50, "rol": "estructura", "notas": "tamizado" },
+        { "nombre": "esencia de vainilla", "cantidad_g": 5, "rol": "aroma", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Batido", "duracion_min": 10, "temperatura_c": 22, "tecnica": "batido", "descripcion": "Batir huevos con azúcar hasta punto letra.", "ciencia_ref": "aireado" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "envolvente", "descripcion": "Incorporar harina y almidón tamizados con movimientos envolventes.", "ciencia_ref": "" },
+        { "nombre": "Horneado", "duracion_min": 20, "temperatura_c": 180, "tecnica": "horneado", "descripcion": "Hornear en placa 30x20 cm.", "ciencia_ref": "gelatinizacion_almidon" }
+      ]
+    },
+    {
+      "id": "crema-mascarpone-01",
+      "nombre": "Crema de mascarpone",
+      "ingredientes": [
+        { "nombre": "yemas", "cantidad_g": 100, "rol": "estructura", "notas": "" },
+        { "nombre": "azúcar", "cantidad_g": 100, "rol": "endulzante", "notas": "" },
+        { "nombre": "agua", "cantidad_g": 50, "rol": "solvente", "notas": "" },
+        { "nombre": "mascarpone", "cantidad_g": 500, "rol": "grasa", "notas": "temperatura ambiente" },
+        { "nombre": "crema de leche", "cantidad_g": 300, "rol": "grasa", "notas": "35% MG, bien fría" }
+      ],
+      "etapas": [
+        { "nombre": "Sabayón", "duracion_min": 5, "temperatura_c": 85, "tecnica": "batido en caliente", "descripcion": "Batir yemas con almíbar a 121°C hasta punto letra.", "ciencia_ref": "coagulacion_proteinas" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "envolvente", "descripcion": "Incorporar mascarpone y crema batida a medio punto.", "ciencia_ref": "emulsion" }
+      ]
+    },
+    {
+      "id": "cafe-almibar-01",
+      "nombre": "Almíbar de café",
+      "ingredientes": [
+        { "nombre": "agua", "cantidad_g": 200, "rol": "solvente", "notas": "" },
+        { "nombre": "azúcar", "cantidad_g": 100, "rol": "endulzante", "notas": "" },
+        { "nombre": "café instantáneo", "cantidad_g": 20, "rol": "aroma", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Hervor", "duracion_min": 2, "temperatura_c": 100, "tecnica": "hervor", "descripcion": "Hervir agua con azúcar, disolver café.", "ciencia_ref": "extraccion" }
+      ]
+    }
+  ],
+  "etapas": [
+    { "nombre": "Preparar bizcocho", "sub_receta_id": "bizcocho-vainilla-01", "ciencia_ref": "aireado" },
+    { "nombre": "Preparar crema", "sub_receta_id": "crema-mascarpone-01", "ciencia_ref": "emulsion" },
+    { "nombre": "Preparar almíbar", "sub_receta_id": "cafe-almibar-01", "ciencia_ref": "extraccion" },
+    { "nombre": "Montaje", "descripcion": "Alternar capas de bizcocho embebido en almíbar y crema de mascarpone. Refrigerar 4 horas.", "ciencia_ref": "" },
+    { "nombre": "Terminación", "descripcion": "Espolvorear cacao amargo antes de servir.", "ciencia_ref": "" }
+  ],
+  "ciencia": [
+    {
+      "fenomeno": "coagulacion_proteinas",
+      "explicacion": "El calor y el batido constante desnaturalizan las proteínas de la yema. La coagulación es el paso siguiente, donde las proteínas desnaturalizadas se agregan. En un sabayón, la agitación y la presencia de azúcar e interfases aire-líquido previenen una agregación excesiva, resultando en una espuma estable y cremosa.",
+      "punto_critico": "Alcanzar los 85°C en el corazón de la mezcla. Por debajo, no se pasteuriza; por encima, las proteínas coagulan formando grumos.",
+      "error_tipico": "Calentar demasiado rápido o sin batir constantemente, lo que provoca que las yemas se cocinen y formen grumos.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 2: Las Proteínas I."
+    },
+    {
+      "fenomeno": "emulsion",
+      "explicacion": "La crema de mascarpone es una emulsión de grasa en agua. Las gotas de grasa (del mascarpone y la crema batida) se dispersan en la fase acuosa (yemas, azúcar, agua). La lecitina de la yema actúa como emulsionante, rodeando las gotas de grasa y evitando que se unan.",
+      "punto_critico": "La temperatura de la crema de leche (0-4°C) y del mascarpone (ambiente). Un choque térmico incorrecto o un batido excesivo pueden romper la emulsión.",
+      "error_tipico": "Batir en exceso la crema o incorporar mascarpone frío, lo que provoca que la crema se corte o quede grumosa.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 3: Las Emulsiones."
+    },
+    {
+      "fenomeno": "extraccion",
+      "explicacion": "La extracción es el proceso de disolver y separar compuestos activos (aromas, sabores) de una matriz sólida (café molido) usando un solvente (agua caliente). El café instantáneo es un producto ya extraído y deshidratado, por lo que se redisuelve fácilmente en el almíbar caliente.",
+      "punto_critico": "La temperatura del agua (cerca de 100°C) y el tiempo de contacto para una disolución completa.",
+      "error_tipico": "Usar agua tibia, lo que resulta en una disolución incompleta y un sabor más débil.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Glosario: Extracción."
+    }
+  ],
+  "bpm": [
+    "Lavado de manos antes de manipular",
+    "Superficie desinfectada",
+    "Uso de guantes",
+    "Temperatura de frío controlada (< 5°C)"
+  ],
+  "anmat": [
+    "Rotulado según CAA art. 235",
+    "Declaración de alérgenos",
+    "Fecha de elaboración y vencimiento",
+    "Condiciones de conservación: refrigerado"
+  ],
+  "rendimiento": {
+    "unidades": 12,
+    "peso_pieza_g": 120,
+    "peso_total_g": 1440
+  },
+  "referencias": [
+    { "libro": "Gross, Osvaldo. El ABC de la Pastelería", "capitulo": "", "pagina": 0 },
+    { "libro": "Koppmann, Mariana. Manual de Química Culinaria", "capitulo": "", "pagina": 0 }
+  ],
+  "activa": true
+},
+{
+  "id": "torta-dobos-01",
+  "nombre": "Torta Dobos",
+  "bloque": "tortas",
+  "categoria": "tortas-clasicas",
+  "tags": ["chocolate", "caramelo", "clasica", "húngara"],
+  "porciones": 12,
+  "molde": {
+    "forma": "redondo",
+    "diametro_cm": 24,
+    "altura_cm": 6,
+    "tipo": "desmontable"
+  },
+  "escalado": {
+    "tipo": "diametro",
+    "base_cm": 24,
+    "regla": "area",
+    "altura_fija": true
+  },
+  "sub_recetas": [
+    {
+      "id": "bizcocho-dobos-01",
+      "nombre": "Bizcocho Dobos",
+      "ingredientes": [
+        { "nombre": "huevos", "cantidad_g": 200, "rol": "estructura", "notas": "temperatura ambiente" },
+        { "nombre": "azúcar", "cantidad_g": 150, "rol": "endulzante", "notas": "" },
+        { "nombre": "harina 0000", "cantidad_g": 150, "rol": "estructura", "notas": "tamizada" },
+        { "nombre": "almidón de maíz", "cantidad_g": 50, "rol": "estructura", "notas": "tamizado" },
+        { "nombre": "esencia de vainilla", "cantidad_g": 5, "rol": "aroma", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Batido", "duracion_min": 10, "temperatura_c": 22, "tecnica": "batido", "descripcion": "Batir huevos con azúcar hasta punto letra.", "ciencia_ref": "aireado" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "envolvente", "descripcion": "Incorporar harina y almidón tamizados con movimientos envolventes.", "ciencia_ref": "" },
+        { "nombre": "Horneado", "duracion_min": 20, "temperatura_c": 180, "tecnica": "horneado", "descripcion": "Hornear en placas finas. Se necesitan 6 capas de 24 cm de diámetro.", "ciencia_ref": "gelatinizacion_almidon" }
+      ]
+    },
+    {
+      "id": "crema-mantequilla-chocolate-01",
+      "nombre": "Crema de mantequilla de chocolate",
+      "ingredientes": [
+        { "nombre": "yemas", "cantidad_g": 100, "rol": "estructura", "notas": "" },
+        { "nombre": "azúcar", "cantidad_g": 100, "rol": "endulzante", "notas": "" },
+        { "nombre": "agua", "cantidad_g": 50, "rol": "solvente", "notas": "" },
+        { "nombre": "mantequilla", "cantidad_g": 300, "rol": "grasa", "notas": "en pomada" },
+        { "nombre": "cobertura de chocolate negro", "cantidad_g": 200, "rol": "sabor", "notas": "fundida y atemperada" }
+      ],
+      "etapas": [
+        { "nombre": "Sabayón", "duracion_min": 5, "temperatura_c": 85, "tecnica": "batido en caliente", "descripcion": "Batir yemas con almíbar a 121°C hasta punto letra.", "ciencia_ref": "coagulacion_proteinas" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "envolvente", "descripcion": "Incorporar mantequilla en pomada y chocolate fundido.", "ciencia_ref": "emulsion" }
+      ]
+    },
+    {
+      "id": "caramelo-dobos-01",
+      "nombre": "Caramelo para cubrir",
+      "ingredientes": [
+        { "nombre": "azúcar", "cantidad_g": 200, "rol": "endulzante", "notas": "" },
+        { "nombre": "agua", "cantidad_g": 50, "rol": "solvente", "notas": "" },
+        { "nombre": "jugo de limón", "cantidad_g": 5, "rol": "ácido", "notas": "para evitar cristalización" }
+      ],
+      "etapas": [
+        { "nombre": "Caramelización", "duracion_min": 10, "temperatura_c": 160, "tecnica": "caramelización", "descripcion": "Fundir el azúcar con el agua y el jugo de limón hasta obtener un caramelo dorado.", "ciencia_ref": "caramelizacion" }
+      ]
+    }
+  ],
+  "etapas": [
+    { "nombre": "Preparar bizcocho", "sub_receta_id": "bizcocho-dobos-01", "ciencia_ref": "aireado" },
+    { "nombre": "Preparar crema", "sub_receta_id": "crema-mantequilla-chocolate-01", "ciencia_ref": "emulsion" },
+    { "nombre": "Preparar caramelo", "sub_receta_id": "caramelo-dobos-01", "ciencia_ref": "caramelizacion" },
+    { "nombre": "Montaje", "descripcion": "Alternar capas de bizcocho y crema de mantequilla. Cubrir la parte superior con el caramelo y dejar enfriar.", "ciencia_ref": "" },
+    { "nombre": "Terminación", "descripcion": "Cortar el caramelo en porciones antes de que endurezca por completo.", "ciencia_ref": "" }
+  ],
+  "ciencia": [
+    {
+      "fenomeno": "aireado",
+      "explicacion": "El batido de huevos y azúcar incorpora aire en forma de burbujas. Las proteínas del huevo se desnaturalizan y estabilizan estas burbujas, creando una espuma que, al hornearse, se expande y da volumen al bizcocho.",
+      "punto_critico": "El batido debe alcanzar el 'punto letra', que es cuando la mezcla forma un hilo al levantar el batidor. Esto asegura que se ha incorporado suficiente aire.",
+      "error_tipico": "Batir en exceso o en defecto. Un batido excesivo puede romper la espuma; un batido insuficiente no incorpora suficiente aire.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 2: Las Proteínas I."
+    },
+    {
+      "fenomeno": "emulsion",
+      "explicacion": "La crema de mantequilla es una emulsión de agua en grasa. La mantequilla, que es una emulsión de agua en aceite, se mezcla con el sabayón (que es principalmente agua) para formar una emulsión más compleja. La clave es la temperatura: la mantequilla debe estar en 'punto pomada' para que se incorpore sin cortarse.",
+      "punto_critico": "La temperatura de la mantequilla (20-22°C). Si está muy fría, no se emulsiona; si está muy caliente, se derrite y la emulsión se rompe.",
+      "error_tipico": "Añadir la mantequilla demasiado rápido o a una temperatura incorrecta, lo que provoca que la crema se corte.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 3: Las Emulsiones."
+    },
+    {
+      "fenomeno": "caramelizacion",
+      "explicacion": "La caramelización es la descomposición térmica del azúcar. Al calentar el azúcar por encima de su punto de fusión (160-180°C), se producen cientos de nuevos compuestos aromáticos y de color marrón. Es una reacción compleja que no involucra proteínas, a diferencia de la reacción de Maillard.",
+      "punto_critico": "La temperatura controlada (160°C). Si se calienta demasiado, el caramelo se quema y amarga. La adición de unas gotas de limón ayuda a evitar la cristalización prematura.",
+      "error_tipico": "Remover el azúcar mientras se funde, lo que puede provocar cristalización. Es mejor dejar que se funda sin remover hasta que empiece a tomar color.",
+      "referencia": "Badui Dergal, S. Química de los Alimentos, Cap. 2: Hidratos de Carbono, Sección 2.9.5.1 Caramelización."
+    }
+  ],
+  "bpm": [
+    "Lavado de manos antes de manipular",
+    "Superficie desinfectada",
+    "Uso de guantes",
+    "Temperatura de frío controlada (< 5°C)"
+  ],
+  "anmat": [
+    "Rotulado según CAA art. 235",
+    "Declaración de alérgenos",
+    "Fecha de elaboración y vencimiento",
+    "Condiciones de conservación: refrigerado"
+  ],
+  "rendimiento": {
+    "unidades": 12,
+    "peso_pieza_g": 120,
+    "peso_total_g": 1440
+  },
+  "referencias": [
+    { "libro": "Gross, Osvaldo. El ABC de la Pastelería", "capitulo": "", "pagina": 90 },
+    { "libro": "Koppmann, Mariana. Manual de Química Culinaria", "capitulo": "", "pagina": 0 },
+    { "libro": "Badui Dergal, Salvador. Química de los Alimentos", "capitulo": "2", "pagina": 0 }
+  ],
+  "activa": true
+},
+{
+  "id": "lemon-pie-01",
+  "nombre": "Lemon Pie",
+  "bloque": "tortas",
+  "categoria": "tortas-frutales",
+  "tags": ["limon", "merengue", "clasica", "frutal"],
+  "porciones": 12,
+  "molde": {
+    "forma": "redondo",
+    "diametro_cm": 24,
+    "altura_cm": 4,
+    "tipo": "desmontable"
+  },
+  "escalado": {
+    "tipo": "diametro",
+    "base_cm": 24,
+    "regla": "area",
+    "altura_fija": true
+  },
+  "sub_recetas": [
+    {
+      "id": "masa-sablee-01",
+      "nombre": "Masa Sablée",
+      "ingredientes": [
+        { "nombre": "harina 0000", "cantidad_g": 250, "rol": "estructura", "notas": "tamizada" },
+        { "nombre": "mantequilla", "cantidad_g": 150, "rol": "grasa", "notas": "fría, en cubos" },
+        { "nombre": "azúcar impalpable", "cantidad_g": 80, "rol": "endulzante", "notas": "" },
+        { "nombre": "huevo", "cantidad_g": 50, "rol": "ligante", "notas": "" },
+        { "nombre": "sal", "cantidad_g": 2, "rol": "sabor", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Sablage", "duracion_min": 5, "temperatura_c": 18, "tecnica": "sablage", "descripcion": "Frotar la mantequilla fría con la harina hasta obtener una textura arenosa.", "ciencia_ref": "emulsion" },
+        { "nombre": "Amasado", "duracion_min": 2, "temperatura_c": 18, "tecnica": "amasado", "descripcion": "Incorporar el huevo y el azúcar, formar una masa sin amasar en exceso.", "ciencia_ref": "desarrollo_gluten" },
+        { "nombre": "Frío", "duracion_min": 60, "temperatura_c": 4, "tecnica": "refrigeración", "descripcion": "Refrigerar la masa por 1 hora antes de estirar.", "ciencia_ref": "" },
+        { "nombre": "Horneado", "duracion_min": 20, "temperatura_c": 180, "tecnica": "horneado", "descripcion": "Hornear la masa en el molde hasta que esté dorada.", "ciencia_ref": "gelatinizacion_almidon" }
+      ]
+    },
+    {
+      "id": "crema-limon-01",
+      "nombre": "Crema de limón",
+      "ingredientes": [
+        { "nombre": "jugo de limón", "cantidad_g": 150, "rol": "sabor", "notas": "recién exprimido" },
+        { "nombre": "azúcar", "cantidad_g": 150, "rol": "endulzante", "notas": "" },
+        { "nombre": "huevos", "cantidad_g": 150, "rol": "estructura", "notas": "" },
+        { "nombre": "yemas", "cantidad_g": 50, "rol": "estructura", "notas": "" },
+        { "nombre": "mantequilla", "cantidad_g": 100, "rol": "grasa", "notas": "fría, en cubos" }
+      ],
+      "etapas": [
+        { "nombre": "Cocción", "duracion_min": 10, "temperatura_c": 85, "tecnica": "cocción a baño maría", "descripcion": "Cocinar el jugo de limón, azúcar, huevos y yemas a baño maría hasta que espese.", "ciencia_ref": "coagulacion_proteinas" },
+        { "nombre": "Incorporación", "duracion_min": 5, "temperatura_c": 40, "tecnica": "emulsion", "descripcion": "Retirar del fuego e incorporar la mantequilla fría en cubos, batiendo hasta emulsionar.", "ciencia_ref": "emulsion" }
+      ]
+    },
+    {
+      "id": "merengue-italiano-01",
+      "nombre": "Merengue Italiano",
+      "ingredientes": [
+        { "nombre": "claras de huevo", "cantidad_g": 150, "rol": "estructura", "notas": "temperatura ambiente" },
+        { "nombre": "azúcar", "cantidad_g": 300, "rol": "endulzante", "notas": "" },
+        { "nombre": "agua", "cantidad_g": 90, "rol": "solvente", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Almíbar", "duracion_min": 10, "temperatura_c": 118, "tecnica": "cocción", "descripcion": "Hervir el azúcar con el agua hasta alcanzar 118°C.", "ciencia_ref": "cristalizacion" },
+        { "nombre": "Batido", "duracion_min": 10, "temperatura_c": 22, "tecnica": "batido en caliente", "descripcion": "Batir las claras e incorporar el almíbar caliente en hilo hasta que el merengue esté frío y firme.", "ciencia_ref": "aireado" }
+      ]
+    }
+  ],
+  "etapas": [
+    { "nombre": "Preparar masa", "sub_receta_id": "masa-sablee-01", "ciencia_ref": "emulsion" },
+    { "nombre": "Preparar crema de limón", "sub_receta_id": "crema-limon-01", "ciencia_ref": "coagulacion_proteinas" },
+    { "nombre": "Preparar merengue", "sub_receta_id": "merengue-italiano-01", "ciencia_ref": "aireado" },
+    { "nombre": "Montaje", "descripcion": "Rellenar la masa horneada con la crema de limón y cubrir con el merengue. Dorar el merengue con soplete.", "ciencia_ref": "" }
+  ],
+  "ciencia": [
+    {
+      "fenomeno": "coagulacion_proteinas",
+      "explicacion": "La cocción de la crema de limón coagula las proteínas de los huevos y las yemas. El calor desnaturaliza las proteínas, que se agregan formando una red que atrapa el agua y la grasa, espesando la crema. El ácido del limón también ayuda a la coagulación, pero un exceso puede cortar la crema.",
+      "punto_critico": "La temperatura de cocción (85°C). Si se calienta demasiado, las proteínas coagulan en exceso y la crema se corta. Si no se calienta lo suficiente, la crema no espesa.",
+      "error_tipico": "No batir constantemente durante la cocción, lo que provoca que la crema se pegue o se formen grumos.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 2: Las Proteínas I."
+    },
+    {
+      "fenomeno": "emulsion",
+      "explicacion": "La crema de limón es una emulsión de grasa en agua. La mantequilla se incorpora a la mezcla de jugo de limón, azúcar y huevos, que es la fase acuosa. La lecitina de las yemas actúa como emulsionante. La clave es añadir la mantequilla fría al final para que se emulsione sin derretirse.",
+      "punto_critico": "La temperatura de la mezcla al incorporar la mantequilla (40°C). Si está muy caliente, la mantequilla se derrite y la emulsión no se forma correctamente.",
+      "error_tipico": "Añadir la mantequilla toda de golpe o a una temperatura incorrecta, lo que provoca que la crema se corte.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 3: Las Emulsiones."
+    },
+    {
+      "fenomeno": "aireado",
+      "explicacion": "El merengue es una espuma de aire en agua. El batido de las claras incorpora aire en forma de burbujas. Las proteínas de la clara se desnaturalizan y se reorganizan en la interfase aire-agua, estabilizando las burbujas. El almíbar caliente ayuda a pasteurizar y estabilizar el merengue.",
+      "punto_critico": "La temperatura del almíbar (118°C) y la velocidad de batido. Un almíbar demasiado caliente puede cocinar las claras; un batido insuficiente no incorpora suficiente aire.",
+      "error_tipico": "Batir las claras en un bol sucio o con restos de grasa, lo que impide que las proteínas estabilicen la espuma.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 2: Las Proteínas I."
+    }
+  ],
+  "bpm": [
+    "Lavado de manos antes de manipular",
+    "Superficie desinfectada",
+    "Uso de guantes",
+    "Temperatura de frío controlada (< 5°C)"
+  ],
+  "anmat": [
+    "Rotulado según CAA art. 235",
+    "Declaración de alérgenos",
+    "Fecha de elaboración y vencimiento",
+    "Condiciones de conservación: refrigerado"
+  ],
+  "rendimiento": {
+    "unidades": 12,
+    "peso_pieza_g": 120,
+    "peso_total_g": 1440
+  },
+  "referencias": [
+    { "libro": "Gross, Osvaldo. El ABC de la Pastelería", "capitulo": "", "pagina": 0 },
+    { "libro": "Koppmann, Mariana. Manual de Química Culinaria", "capitulo": "", "pagina": 0 }
+  ],
+  "activa": true
+},
+{
+  "id": "devils-cake-01",
+  "nombre": "Devil's Cake",
+  "bloque": "tortas",
+  "categoria": "tortas-chocolate",
+  "tags": ["chocolate", "clasica", "estadounidense"],
+  "porciones": 12,
+  "molde": {
+    "forma": "redondo",
+    "diametro_cm": 24,
+    "altura_cm": 6,
+    "tipo": "desmontable"
+  },
+  "escalado": {
+    "tipo": "diametro",
+    "base_cm": 24,
+    "regla": "area",
+    "altura_fija": true
+  },
+  "sub_recetas": [
+    {
+      "id": "bizcocho-devil-01",
+      "nombre": "Bizcocho Devil's Cake",
+      "ingredientes": [
+        { "nombre": "harina 0000", "cantidad_g": 200, "rol": "estructura", "notas": "tamizada" },
+        { "nombre": "cacao amargo en polvo", "cantidad_g": 50, "rol": "sabor", "notas": "tamizado" },
+        { "nombre": "azúcar", "cantidad_g": 200, "rol": "endulzante", "notas": "" },
+        { "nombre": "mantequilla", "cantidad_g": 150, "rol": "grasa", "notas": "en pomada" },
+        { "nombre": "huevos", "cantidad_g": 150, "rol": "estructura", "notas": "temperatura ambiente" },
+        { "nombre": "leche", "cantidad_g": 150, "rol": "solvente", "notas": "" },
+        { "nombre": "bicarbonato de sodio", "cantidad_g": 5, "rol": "leudante", "notas": "" },
+        { "nombre": "polvo de hornear", "cantidad_g": 3, "rol": "leudante", "notas": "" },
+        { "nombre": "esencia de vainilla", "cantidad_g": 5, "rol": "aroma", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Cremado", "duracion_min": 5, "temperatura_c": 22, "tecnica": "cremado", "descripcion": "Batir la mantequilla con el azúcar hasta blanquear.", "ciencia_ref": "aireado" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "emulsion", "descripcion": "Incorporar los huevos uno a uno, luego la leche y finalmente los ingredientes secos tamizados.", "ciencia_ref": "emulsion" },
+        { "nombre": "Horneado", "duracion_min": 30, "temperatura_c": 180, "tecnica": "horneado", "descripcion": "Hornear en molde de 24 cm.", "ciencia_ref": "gelatinizacion_almidon" }
+      ]
+    },
+    {
+      "id": "glaseado-chocolate-01",
+      "nombre": "Glaseado de chocolate",
+      "ingredientes": [
+        { "nombre": "cobertura de chocolate negro", "cantidad_g": 200, "rol": "sabor", "notas": "picada" },
+        { "nombre": "crema de leche", "cantidad_g": 200, "rol": "grasa", "notas": "35% MG" },
+        { "nombre": "mantequilla", "cantidad_g": 20, "rol": "grasa", "notas": "en pomada" }
+      ],
+      "etapas": [
+        { "nombre": "Emulsión", "duracion_min": 5, "temperatura_c": 50, "tecnica": "emulsion", "descripcion": "Calentar la crema y verter sobre el chocolate picado. Emulsionar y añadir la mantequilla.", "ciencia_ref": "emulsion" }
+      ]
+    }
+  ],
+  "etapas": [
+    { "nombre": "Preparar bizcocho", "sub_receta_id": "bizcocho-devil-01", "ciencia_ref": "aireado" },
+    { "nombre": "Preparar glaseado", "sub_receta_id": "glaseado-chocolate-01", "ciencia_ref": "emulsion" },
+    { "nombre": "Montaje", "descripcion": "Cortar el bizcocho en capas y rellenar con el glaseado. Cubrir toda la torta con el glaseado restante.", "ciencia_ref": "" }
+  ],
+  "ciencia": [
+    {
+      "fenomeno": "aireado",
+      "explicacion": "El cremado de la mantequilla con el azúcar incorpora aire en forma de pequeñas burbujas. La grasa sólida de la mantequilla atrapa estas burbujas, y los cristales de azúcar ayudan a estabilizarlas. Al hornearse, el aire se expande y los agentes leudantes (bicarbonato y polvo de hornear) producen CO2, lo que da volumen al bizcocho.",
+      "punto_critico": "La temperatura de la mantequilla (20-22°C). Si está muy fría, no se incorpora aire; si está muy caliente, la mantequilla se derrite y no puede atrapar las burbujas.",
+      "error_tipico": "No cremar lo suficiente o añadir los huevos demasiado rápido, lo que provoca que la emulsión se corte.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 2: Las Proteínas I."
+    },
+    {
+      "fenomeno": "reaccion_maillard",
+      "explicacion": "La reacción de Maillard es una reacción de pardeamiento no enzimático entre aminoácidos y azúcares reductores. En el Devil's Cake, el ambiente alcalino del bicarbonato de sodio favorece esta reacción, que contribuye al color oscuro y al sabor complejo del bizcocho.",
+      "punto_critico": "La temperatura (>140°C) y el pH alcalino. La reacción se acelera a medida que aumenta la temperatura y el pH.",
+      "error_tipico": "Un exceso de bicarbonato puede dejar un sabor jabonoso y un color demasiado oscuro.",
+      "referencia": "Badui Dergal, S. Química de los Alimentos, Cap. 2: Hidratos de Carbono, Sección 2.9.5.2 Reacción de Maillard."
+    },
+    {
+      "fenomeno": "emulsion",
+      "explicacion": "El glaseado de chocolate es una emulsión de grasa en agua. La crema de leche (fase acuosa) se emulsiona con el chocolate (fase grasa) gracias a los emulsionantes naturales del chocolate (lecitina) y de la crema. La mantequilla añadida al final ayuda a dar brillo y suavidad.",
+      "punto_critico": "La temperatura de la crema (50°C). Si está muy caliente, puede quemar el chocolate; si está muy fría, no lo funde correctamente y la emulsión no se forma.",
+      "error_tipico": "Verter la crema de golpe o no emulsionar correctamente, lo que provoca que el glaseado quede grumoso o sin brillo.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 3: Las Emulsiones."
+    }
+  ],
+  "bpm": [
+    "Lavado de manos antes de manipular",
+    "Superficie desinfectada",
+    "Uso de guantes",
+    "Temperatura de frío controlada (< 5°C)"
+  ],
+  "anmat": [
+    "Rotulado según CAA art. 235",
+    "Declaración de alérgenos",
+    "Fecha de elaboración y vencimiento",
+    "Condiciones de conservación: refrigerado"
+  ],
+  "rendimiento": {
+    "unidades": 12,
+    "peso_pieza_g": 120,
+    "peso_total_g": 1440
+  },
+  "referencias": [
+    { "libro": "Gross, Osvaldo. El ABC de la Pastelería", "capitulo": "", "pagina": 0 },
+    { "libro": "Koppmann, Mariana. Manual de Química Culinaria", "capitulo": "", "pagina": 0 },
+    { "libro": "Badui Dergal, Salvador. Química de los Alimentos", "capitulo": "2", "pagina": 0 }
+  ],
+  "activa": true
+},
+{
+  "id": "torta-chiffon-01",
+  "nombre": "Torta Chiffon",
+  "bloque": "tortas",
+  "categoria": "tortas-clasicas",
+  "tags": ["vainilla", "esponjosa", "clasica", "estadounidense"],
+  "porciones": 12,
+  "molde": {
+    "forma": "redondo",
+    "diametro_cm": 24,
+    "altura_cm": 10,
+    "tipo": "fijo"
+  },
+  "escalado": {
+    "tipo": "diametro",
+    "base_cm": 24,
+    "regla": "area",
+    "altura_fija": true
+  },
+  "sub_recetas": [
+    {
+      "id": "bizcocho-chiffon-01",
+      "nombre": "Bizcocho Chiffon",
+      "ingredientes": [
+        { "nombre": "harina 0000", "cantidad_g": 200, "rol": "estructura", "notas": "tamizada" },
+        { "nombre": "azúcar", "cantidad_g": 200, "rol": "endulzante", "notas": "" },
+        { "nombre": "polvo de hornear", "cantidad_g": 10, "rol": "leudante", "notas": "" },
+        { "nombre": "sal", "cantidad_g": 3, "rol": "sabor", "notas": "" },
+        { "nombre": "yemas", "cantidad_g": 100, "rol": "estructura", "notas": "" },
+        { "nombre": "aceite vegetal", "cantidad_g": 100, "rol": "grasa", "notas": "" },
+        { "nombre": "agua", "cantidad_g": 120, "rol": "solvente", "notas": "" },
+        { "nombre": "esencia de vainilla", "cantidad_g": 5, "rol": "aroma", "notas": "" },
+        { "nombre": "claras de huevo", "cantidad_g": 200, "rol": "estructura", "notas": "temperatura ambiente" },
+        { "nombre": "cremor tártaro", "cantidad_g": 3, "rol": "estabilizante", "notas": "" }
+      ],
+      "etapas": [
+        { "nombre": "Mezcla de yemas", "duracion_min": 5, "temperatura_c": 22, "tecnica": "batido", "descripcion": "Batir las yemas con el aceite, el agua y la vainilla. Incorporar los ingredientes secos tamizados.", "ciencia_ref": "emulsion" },
+        { "nombre": "Batido de claras", "duracion_min": 8, "temperatura_c": 22, "tecnica": "batido", "descripcion": "Batir las claras con el cremor tártaro hasta punto nieve. Incorporar el azúcar gradualmente.", "ciencia_ref": "aireado" },
+        { "nombre": "Incorporación", "duracion_min": 5, "tecnica": "envolvente", "descripcion": "Incorporar las claras batidas a la mezcla de yemas con movimientos envolventes.", "ciencia_ref": "" },
+        { "nombre": "Horneado", "duracion_min": 50, "temperatura_c": 170, "tecnica": "horneado", "descripcion": "Hornear en molde de 24 cm sin engrasar. Enfriar boca abajo.", "ciencia_ref": "gelatinizacion_almidon" }
+      ]
+    }
+  ],
+  "etapas": [
+    { "nombre": "Preparar bizcocho", "sub_receta_id": "bizcocho-chiffon-01", "ciencia_ref": "aireado" },
+    { "nombre": "Montaje", "descripcion": "Desmoldar la torta y decorar al gusto (crema batida, frutas, etc.).", "ciencia_ref": "" }
+  ],
+  "ciencia": [
+    {
+      "fenomeno": "aireado",
+      "explicacion": "El batido de las claras de huevo incorpora aire en forma de burbujas. Las proteínas de la clara se desnaturalizan y se reorganizan en la interfase aire-agua, estabilizando las burbujas. El cremor tártaro (ácido) ayuda a estabilizar la espuma y evita que las claras se sobre-batan.",
+      "punto_critico": "El punto de nieve. Las claras deben estar firmes pero no secas. Un batido excesivo puede romper la espuma y hacer que la torta se desinfle.",
+      "error_tipico": "Batir las claras en un bol sucio o con restos de grasa, lo que impide que las proteínas estabilicen la espuma. También, incorporar las claras a la mezcla de yemas con movimientos enérgicos, lo que destruye la espuma.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 2: Las Proteínas I."
+    },
+    {
+      "fenomeno": "emulsion",
+      "explicacion": "La mezcla de yemas, aceite y agua es una emulsión de grasa en agua. La lecitina de las yemas actúa como emulsionante. El aceite, al ser líquido, se emulsiona más fácilmente que la mantequilla, lo que contribuye a la textura ligera de la torta.",
+      "punto_critico": "La incorporación gradual del aceite para que la emulsión no se corte.",
+      "error_tipico": "Añadir todo el aceite de golpe, lo que puede provocar que la emulsión se separe.",
+      "referencia": "Koppmann, M. Manual de Química Culinaria, Cap. 3: Las Emulsiones."
+    },
+    {
+      "fenomeno": "gelatinizacion_almidon",
+      "explicacion": "Durante el horneado, el calor hace que los gránulos de almidón de la harina absorban agua y se gelatinicen, formando una estructura que atrapa las burbujas de aire y da forma a la torta. La red de gluten también contribuye a la estructura.",
+      "punto_critico": "La temperatura del horno (170°C). Si es muy alta, la corteza se forma antes de que el interior se cocine; si es muy baja, la torta no sube correctamente.",
+      "error_tipico": "Abrir el horno durante el horneado, lo que provoca que la torta se desinfle.",
+      "referencia": "Badui Dergal, S. Química de los Alimentos, Cap. 2: Hidratos de Carbono, Sección 2.11.3 Almidón."
+    }
+  ],
+  "bpm": [
+    "Lavado de manos antes de manipular",
+    "Superficie desinfectada",
+    "Uso de guantes",
+    "Temperatura de frío controlada (< 5°C)"
+  ],
+  "anmat": [
+    "Rotulado según CAA art. 235",
+    "Declaración de alérgenos",
+    "Fecha de elaboración y vencimiento",
+    "Condiciones de conservación: refrigerado"
+  ],
+  "rendimiento": {
+    "unidades": 12,
+    "peso_pieza_g": 120,
+    "peso_total_g": 1440
+  },
+  "referencias": [
+    { "libro": "Gross, Osvaldo. El ABC de la Pastelería", "capitulo": "", "pagina": 0 },
+    { "libro": "Koppmann, Mariana. Manual de Química Culinaria", "capitulo": "", "pagina": 0 },
+    { "libro": "Badui Dergal, Salvador. Química de los Alimentos", "capitulo": "2", "pagina": 0 }
+  ],
+  "activa": true
+}
+]

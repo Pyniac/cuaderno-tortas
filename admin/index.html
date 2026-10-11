@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel de administración del Cuaderno de Pastelería">
+  <meta name="theme-color" content="#1a1a1a">
+  
+  <title>Admin - Cuaderno de Pastelería</title>
+  
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <header class="admin-header">
+    <h1>Cuaderno de Pastelería — Admin</h1>
+    <p class="admin-subtitle">Gestión de recetas · CRUD · Exportar / Importar</p>
+  </header>
+
+  <div class="admin-container">
+
+    <!-- Barra de acciones -->
+    <div class="admin-actions">
+      <button id="btn-nueva-receta" class="btn btn-primary">+ Nueva Receta</button>
+      <button id="btn-exportar" class="btn btn-secondary">⬇ Exportar JSON</button>
+      <label for="input-importar" class="btn btn-secondary" style="cursor:pointer;">
+        ⬆ Importar JSON
+        <input type="file" id="input-importar" accept=".json" style="display:none;">
+      </label>
+      <button id="btn-restaurar" class="btn btn-danger">↺ Restaurar desde archivo</button>
+      <a href="../index.html" class="btn btn-secondary">← Ver App</a>
+      
+      <span id="admin-status" class="admin-status"></span>
+    </div>
+
+    <!-- Tabla de recetas -->
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Bloque</th>
+          <th>Categoría</th>
+          <th>Tags</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-recetas">
+        <!-- Las filas se generan dinámicamente desde admin.js -->
+      </tbody>
+    </table>
+
+    <!-- Formulario de edición (oculto por defecto) -->
+    <section id="form-edicion" class="admin-form-section hidden">
+      <h2 id="form-titulo">Nueva Receta</h2>
+      
+      <form id="form-receta">
+        
+        <!-- Datos básicos -->
+        <h3>Datos básicos</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="campo-id">ID</label>
+            <input type="text" id="campo-id" placeholder="torta-chocolate-01">
+          </div>
+          <div class="form-group">
+            <label for="campo-nombre">Nombre</label>
+            <input type="text" id="campo-nombre" placeholder="Torta de chocolate">
+          </div>
+          <div class="form-group">
+            <label for="campo-bloque">Bloque</label>
+            <select id="campo-bloque">
+              <option value="">— Seleccionar —</option>
+              <option value="tortas">Tortas</option>
+              <option value="cookies">Cookies</option>
+              <option value="tartas">Tartas</option>
+              <option value="chocolateria">Chocolatería</option>
+              <option value="laminados">Laminados</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="campo-categoria">Categoría</label>
+            <select id="campo-categoria">
+              <option value="">— Cargando... —</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="campo-tags">Tags (separados por coma)</label>
+            <input type="text" id="campo-tags" placeholder="chocolate, clasico, cumpleaños">
+          </div>
+          <div class="form-group">
+            <label for="campo-porciones">Porciones</label>
+            <input type="number" id="campo-porciones" min="1" step="1">
+          </div>
+        </div>
+
+        <!-- Molde -->
+        <h3>Molde</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="campo-molde-forma">Forma</label>
+            <select id="campo-molde-forma">
+              <option value="">— Seleccionar —</option>
+              <option value="redondo">Redondo</option>
+              <option value="rectangular">Rectangular</option>
+              <option value="cuadrado">Cuadrado</option>
+              <option value="capsula">Cápsula</option>
+              <option value="media-cana">Media caña</option>
+              <option value="ninguno">Sin molde</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="campo-molde-diametro">Diámetro (cm)</label>
+            <input type="number" id="campo-molde-diametro" min="0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label for="campo-molde-altura">Altura (cm)</label>
+            <input type="number" id="campo-molde-altura" min="0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label for="campo-molde-tipo">Tipo</label>
+            <select id="campo-molde-tipo">
+              <option value="">— Seleccionar —</option>
+              <option value="desmontable">Desmontable</option>
+              <option value="fijo">Fijo</option>
+              <option value="policarbonato">Policarbonato</option>
+              <option value="silicona">Silicona</option>
+              <option value="papel">Papel</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="campo-molde-cavidades">Cavidades</label>
+            <input type="number" id="campo-molde-cavidades" min="0" step="1">
+          </div>
+          <div class="form-group">
+            <label for="campo-molde-peso">Peso por pieza (g)</label>
+            <input type="number" id="campo-molde-peso" min="0" step="0.1">
+          </div>
+        </div>
+
+        <!-- Escalado -->
+        <h3>Escalado</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="campo-escalado-tipo">Tipo</label>
+            <select id="campo-escalado-tipo">
+              <option value="">— Seleccionar —</option>
+              <option value="diametro">Por diámetro</option>
+              <option value="area">Por área</option>
+              <option value="por_unidades">Por unidades</option>
+              <option value="por_peso">Por peso</option>
+              <option value="triple">Triple (chocolatería)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="campo-escalado-base-cm">Base (cm o g)</label>
+            <input type="number" id="campo-escalado-base-cm" min="0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label for="campo-escalado-regla">Regla</label>
+            <select id="campo-escalado-regla">
+              <option value="">— Seleccionar —</option>
+              <option value="area">Área</option>
+              <option value="peso">Peso</option>
+              <option value="unidades">Unidades</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="campo-escalado-altura-fija">
+              <input type="checkbox" id="campo-escalado-altura-fija"> Altura fija
+            </label>
+          </div>
+        </div>
+
+        <!-- Sub-recetas -->
+        <h3>Sub-recetas</h3>
+        <div id="sub-recetas-container">
+          <!-- Los bloques de sub-recetas se generan dinámicamente -->
+        </div>
+        <button type="button" id="btn-add-sub-receta" class="btn btn-secondary">+ Añadir sub-receta</button>
+
+        <!-- Ciencia -->
+        <h3>Ciencia detrás de la receta</h3>
+        <div id="ciencia-container">
+          <!-- Los bloques de ciencia se generan dinámicamente -->
+        </div>
+        <button type="button" id="btn-add-ciencia" class="btn btn-secondary">+ Añadir bloque de ciencia</button>
+
+        <!-- BPM -->
+        <h3>BPM — Buenas Prácticas de Manufactura</h3>
+        <div id="bpm-container" class="checklist-container">
+          <!-- Los checkboxes de BPM se generan dinámicamente -->
+        </div>
+        <div class="form-group">
+          <label for="campo-bpm-extra">BPM adicionales (una por línea)</label>
+          <textarea id="campo-bpm-extra" rows="2" placeholder="Escribe otras BPM no listadas arriba..."></textarea>
+        </div>
+
+        <!-- ANMAT -->
+        <h3>ANMAT — Rotulado y normativa</h3>
+        <div id="anmat-container" class="checklist-container">
+          <!-- Los checkboxes de ANMAT se generan dinámicamente -->
+        </div>
+        <div class="form-group">
+          <label for="campo-anmat-extra">ANMAT adicionales (una por línea)</label>
+          <textarea id="campo-anmat-extra" rows="2" placeholder="Escribe otras normativas no listadas arriba..."></textarea>
+        </div>
+
+        <!-- Rendimiento -->
+        <h3>Rendimiento</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="campo-rendimiento-unidades">Unidades</label>
+            <input type="number" id="campo-rendimiento-unidades" min="0" step="1">
+          </div>
+          <div class="form-group">
+            <label for="campo-rendimiento-peso-pieza">Peso por pieza (g)</label>
+            <input type="number" id="campo-rendimiento-peso-pieza" min="0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label for="campo-rendimiento-peso-total">Peso total (g)</label>
+            <input type="number" id="campo-rendimiento-peso-total" min="0" step="0.1">
+          </div>
+        </div>
+
+        <!-- Referencias -->
+        <h3>Referencias (una por línea: libro, capítulo, página)</h3>
+        <div class="form-group">
+          <textarea id="campo-referencias" rows="4" placeholder="Gross, Tortas, 177"></textarea>
+        </div>
+
+        <!-- Acciones del formulario -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">💾 Guardar</button>
+          <button type="button" id="btn-cancelar" class="btn btn-secondary">✕ Cancelar</button>
+        </div>
+
+      </form>
+    </section>
+
+  </div>
+
+  <footer class="admin-footer">
+    <p>Cuaderno de Pastelería — Panel de Administración</p>
+  </footer>
+
+  <script type="module" src="../js/admin.js"></script>
+
+</body>
+</html>

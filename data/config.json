@@ -1,0 +1,11 @@
+{
+  "bloque": "tortas",
+  "nombre": "Cuaderno de Tortas",
+  "categorias": [
+    "tortas-clasicas",
+    "tortas-chocolate",
+    "tortas-frutales",
+    "tortas-crema",
+    "tortas-modernas"
+  ]
+}

@@ -1,0 +1,788 @@
+/* css/style.css */
+
+/* Reset y base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primario: #5D4037;
+  --color-secundario: #D7CCC8;
+  --color-acento: #FF7043;
+  --color-fondo: #F5F0E8;
+  --color-texto: #3E2723;
+  --color-texto-claro: #6D4C41;
+  --fuente-titulo: 'Playfair Display', serif;
+  --fuente-cuerpo: 'Lora', serif;
+  --sombra: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  --sombra-hover: 6px 6px 0 rgba(0, 0, 0, 0.15);
+  --borde: 2px solid var(--color-primario);
+}
+
+body {
+  font-family: var(--fuente-cuerpo);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: var(--borde);
+}
+
+.titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.nav {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 2px solid var(--color-fondo);
+  color: var(--color-fondo);
+  padding: 0.5rem 1.5rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: var(--color-fondo);
+  color: var(--color-primario);
+}
+
+/* Main */
+.main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+/* Buscador */
+.buscador {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.buscador input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  border: var(--borde);
+  background-color: #FFF;
+  box-shadow: var(--sombra);
+}
+
+.buscador input:focus {
+  outline: none;
+  box-shadow: var(--sombra-hover);
+}
+
+.btn-limpiar {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--color-texto-claro);
+}
+
+/* Filtros */
+.filtros {
+  margin-bottom: 2rem;
+}
+
+.filtro-categorias,
+.filtro-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filtro-btn {
+  padding: 0.4rem 1rem;
+  border: var(--borde);
+  background-color: #FFF;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--sombra);
+}
+
+.filtro-btn:hover {
+  background-color: var(--color-secundario);
+}
+
+.filtro-btn.activo {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+}
+
+/* Lista de recetas */
+.lista-recetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.receta-card {
+  background-color: #FFF;
+  border: var(--borde);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--sombra);
+}
+
+.receta-card:hover {
+  box-shadow: var(--sombra-hover);
+  transform: translate(-2px, -2px);
+}
+
+.receta-nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primario);
+}
+
+.receta-categoria {
+  font-size: 0.9rem;
+  color: var(--color-texto-claro);
+  margin-bottom: 0.5rem;
+}
+
+.receta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: var(--color-secundario);
+  font-size: 0.8rem;
+  border-radius: 2px;
+}
+
+/* Detalle de receta */
+.detalle-receta {
+  background-color: #FFF;
+  border: var(--borde);
+  padding: 2rem;
+  box-shadow: var(--sombra);
+}
+
+.btn-volver {
+  background: none;
+  border: none;
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-primario);
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+}
+
+.btn-volver:hover {
+  text-decoration: underline;
+}
+
+.detalle-nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primario);
+}
+
+.detalle-categoria {
+  font-size: 1rem;
+  color: var(--color-texto-claro);
+  margin-bottom: 0.5rem;
+}
+
+.detalle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.detalle-info {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-fondo);
+  border-left: 4px solid var(--color-acento);
+}
+
+.detalle-info p {
+  margin-bottom: 0.3rem;
+}
+
+/* Escalado */
+.detalle-escalado {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--color-fondo);
+  border: var(--borde);
+}
+
+.escalado-controles {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.escalado-controles label {
+  font-weight: bold;
+}
+
+.escalado-controles input {
+  padding: 0.5rem;
+  border: var(--borde);
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  width: 120px;
+}
+
+.btn-escalar,
+.btn-resetear {
+  padding: 0.5rem 1.5rem;
+  border: var(--borde);
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-escalar {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+}
+
+.btn-escalar:hover {
+  background-color: var(--color-acento);
+}
+
+.btn-resetear {
+  background-color: #FFF;
+  color: var(--color-primario);
+}
+
+.btn-resetear:hover {
+  background-color: var(--color-secundario);
+}
+
+/* Tabla de ingredientes */
+.tabla-ingredientes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.tabla-ingredientes th,
+.tabla-ingredientes td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-secundario);
+}
+
+.tabla-ingredientes th {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+  font-family: var(--fuente-titulo);
+}
+
+.tabla-ingredientes tr:hover {
+  background-color: var(--color-fondo);
+}
+
+/* Etapas */
+.etapa {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-fondo);
+  border-left: 4px solid var(--color-acento);
+}
+
+.etapa h4 {
+  font-family: var(--fuente-titulo);
+  margin-bottom: 0.5rem;
+  color: var(--color-primario);
+}
+
+.etapa-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-texto-claro);
+}
+
+/* Ciencia */
+.ciencia-item {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-fondo);
+  border-left: 4px solid var(--color-acento);
+}
+
+.ciencia-fenomeno {
+  font-family: var(--fuente-titulo);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primario);
+}
+
+.ciencia-explicacion {
+  margin-bottom: 0.5rem;
+}
+
+.ciencia-punto,
+.ciencia-error {
+  margin-bottom: 0.3rem;
+}
+
+.ciencia-referencia {
+  font-size: 0.9rem;
+  color: var(--color-texto-claro);
+  margin-top: 0.5rem;
+}
+
+/* BPM, ANMAT, Referencias */
+.detalle-bpm,
+.detalle-anmat,
+.detalle-referencias {
+  margin-bottom: 1.5rem;
+}
+
+.detalle-bpm ul,
+.detalle-anmat ul,
+.detalle-referencias ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detalle-bpm li,
+.detalle-anmat li,
+.detalle-referencias li {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--color-secundario);
+}
+
+/* Sin resultados */
+.sin-resultados {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-texto-claro);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--color-secundario);
+}
+
+/* Notificaciones */
+.notificacion {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.notificacion.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notificacion-success {
+  background-color: #2E7D32;
+}
+
+.notificacion-error {
+  background-color: #C62828;
+}
+
+.notificacion-info {
+  background-color: var(--color-primario);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 1.8rem;
+  }
+  
+  .lista-recetas {
+    grid-template-columns: 1fr;
+  }
+  
+  .detalle-receta {
+    padding: 1rem;
+  }
+  
+  .escalado-controles {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .tabla-ingredientes {
+    font-size: 0.85rem;
+  }
+  
+  .tabla-ingredientes th,
+  .tabla-ingredientes td {
+    padding: 0.4rem;
+  }
+}
+
+
+/* ============================================
+   VERSIÓN IMPRIMIBLE - FICHA DE OBRADOR
+   ============================================ */
+
+@media print {
+  /* Ocultar navegación, filtros, botones */
+  .header,
+  .nav,
+  .footer,
+  .buscador,
+  .filtros,
+  .no-print,
+  .btn-volver,
+  .print-button,
+  .detalle-escalado,
+  .detalle-tags {
+    display: none !important;
+  }
+
+  /* Reset general */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-family: 'Georgia', 'Times New Roman', serif !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .detalle-receta {
+    background: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Título */
+  .receta-titulo,
+  .detalle-nombre {
+    font-size: 22pt !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    border-bottom: 2px solid #000 !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 15px !important;
+    color: #000 !important;
+    font-family: 'Georgia', serif !important;
+  }
+
+  .detalle-categoria {
+    text-align: center !important;
+    font-size: 10pt !important;
+    margin-bottom: 15px !important;
+    color: #333 !important;
+  }
+
+  /* Subtítulos */
+  h3, h4 {
+    font-size: 13pt !important;
+    font-weight: bold !important;
+    border-bottom: 1px solid #000 !important;
+    padding-bottom: 4px !important;
+    margin-top: 15px !important;
+    margin-bottom: 8px !important;
+    color: #000 !important;
+    page-break-after: avoid;
+  }
+
+  /* Info general */
+  .detalle-info,
+  .receta-info {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    margin-bottom: 15px !important;
+    font-size: 10pt !important;
+    background: none !important;
+    border: none !important;
+    border-left: none !important;
+    padding: 0 !important;
+  }
+
+  .receta-info-item {
+    border: 1px solid #000 !important;
+    padding: 4px 8px !important;
+    background: #fff !important;
+  }
+
+  /* Tablas de ingredientes */
+  .tabla-ingredientes {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 15px !important;
+    font-size: 10pt !important;
+  }
+
+  .tabla-ingredientes th {
+    background: #e0e0e0 !important;
+    border: 1px solid #000 !important;
+    padding: 4px 6px !important;
+    text-align: left !important;
+    font-weight: bold !important;
+    color: #000 !important;
+    font-family: 'Georgia', serif !important;
+  }
+
+  .tabla-ingredientes td {
+    border: 1px solid #000 !important;
+    padding: 3px 6px !important;
+    color: #000 !important;
+  }
+
+  .tabla-ingredientes tr:nth-child(even) {
+    background: #f5f5f5 !important;
+  }
+
+  /* Sub-recetas */
+  .sub-receta {
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+  }
+
+  .sub-receta-nombre {
+    font-size: 13pt !important;
+    font-weight: bold !important;
+    margin-top: 15px !important;
+    margin-bottom: 8px !important;
+    color: #000 !important;
+    border-bottom: 1px solid #000 !important;
+    padding-bottom: 3px !important;
+  }
+
+  /* Etapas */
+  .etapa {
+    margin-bottom: 10px !important;
+    padding: 6px 0 6px 10px !important;
+    border-left: 3px solid #000 !important;
+    background: none !important;
+    page-break-inside: avoid;
+  }
+
+  .etapa-nombre {
+    font-weight: bold !important;
+    font-size: 11pt !important;
+    margin-bottom: 3px !important;
+    color: #000 !important;
+    font-family: 'Georgia', serif !important;
+  }
+
+  .etapa-descripcion {
+    font-style: italic !important;
+    margin-top: 4px !important;
+    font-size: 10pt !important;
+    color: #000 !important;
+  }
+
+  .etapa-meta,
+  .etapa-detalle {
+    display: block !important;
+    font-size: 9pt !important;
+    color: #333 !important;
+    margin-top: 3px !important;
+  }
+
+  .etapa-meta span {
+    margin-right: 10px !important;
+  }
+
+  /* Ciencia */
+  .ciencia-item {
+    border: 1px solid #000 !important;
+    padding: 8px !important;
+    margin-bottom: 10px !important;
+    background: none !important;
+    border-left: 1px solid #000 !important;
+    page-break-inside: avoid;
+  }
+
+  .ciencia-fenomeno {
+    font-weight: bold !important;
+    font-size: 11pt !important;
+    margin-bottom: 4px !important;
+    color: #000 !important;
+    font-family: 'Georgia', serif !important;
+  }
+
+  .ciencia-referencia {
+    font-style: italic !important;
+    font-size: 9pt !important;
+    margin-top: 4px !important;
+    border-top: 1px dotted #000 !important;
+    padding-top: 3px !important;
+    color: #333 !important;
+  }
+
+  /* BPM y ANMAT */
+  .bpm-lista,
+  .anmat-lista {
+    margin: 5px 0 !important;
+    padding-left: 20px !important;
+    font-size: 10pt !important;
+  }
+
+  .bpm-lista li,
+  .anmat-lista li {
+    margin-bottom: 2px !important;
+    color: #000 !important;
+  }
+
+  /* Referencias */
+  .referencias-lista {
+    font-size: 9pt !important;
+    margin-top: 10px !important;
+    padding-top: 8px !important;
+    border-top: 1px solid #000 !important;
+    list-style: none !important;
+    padding-left: 0 !important;
+  }
+
+  .referencias-lista li {
+    margin-bottom: 3px !important;
+    color: #000 !important;
+  }
+
+  /* Pie de ficha */
+  .ficha-footer {
+    margin-top: 20px !important;
+    padding-top: 10px !important;
+    border-top: 1px solid #000 !important;
+    font-size: 8pt !important;
+    text-align: center !important;
+    color: #333 !important;
+  }
+
+  /* Saltos de página */
+  .seccion-ciencia,
+  .seccion-bpm,
+  .seccion-referencias {
+    page-break-before: auto;
+  }
+
+  /* Evitar URLs en enlaces */
+  a[href]:after {
+    content: "" !important;
+  }
+}
+
+/* Botón de imprimir (pantalla) */
+.print-button {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  margin: 1rem 0;
+  border: 2px solid var(--color-primario);
+  background: #fff;
+  color: var(--color-primario);
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: var(--sombra);
+}
+
+.print-button:hover {
+  background: var(--color-secundario);
+}
+
+/* Sub-recetas (pantalla) */
+.sub-receta {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #FFF;
+  border-left: 4px solid var(--color-primario);
+}
+
+.sub-receta-nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
+  color: var(--color-primario);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-secundario);
+}
+
+.sub-receta h4 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
